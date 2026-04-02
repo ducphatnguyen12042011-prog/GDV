@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Agent {
+  id        Int      @id @default(autoincrement())
+  gdvId     String   @unique
+  name      String
+  game      String
+  insurance Int
+  avatar    String?  @default("https://ui-avatars.com/api/?name=GDV&background=FBBF24&color=fff")
+  joinDate  String
+  fbLink    String?
+  zalo      String?
+  services  String?  // Các dịch vụ (ngăn cách bằng dấu phẩy)
+  createdAt DateTime @default(now())
+}
